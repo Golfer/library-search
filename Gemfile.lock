@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: ec06d217644cf3d66bd0e658c9b168af8f0c38c7
+  branch: master
+  specs:
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
+
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: 4b160bd19ecca7f97d7ac22dccd5fde9b0da5a9f
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +87,9 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    database_cleaner (1.8.5)
+    diff-lcs (1.4.4)
+    docile (1.3.2)
     erubi (1.10.0)
     ffi (1.13.1)
     formatador (0.2.5)
@@ -99,6 +118,7 @@ GEM
     jaro_winkler (1.5.4)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    json (2.3.1)
     listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -160,6 +180,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.0)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -176,6 +200,27 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rspec-activemodel-mocks (1.1.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
+    rspec-core (3.9.3)
+      rspec-support (~> 3.9.3)
+    rspec-expectations (3.9.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-rails (3.9.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.4)
     rubocop (0.79.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -199,6 +244,11 @@ GEM
       tilt
     semantic_range (2.3.1)
     shellany (0.0.1)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -233,6 +283,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   brakeman
   byebug
+  database_cleaner
+  faker!
   guard-brakeman
   guard-rubocop
   jbuilder (~> 2.7)
@@ -244,9 +296,14 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.0)
+  rails-controller-testing
+  rspec-activemodel-mocks
+  rspec-rails (~> 3.8)
   rubocop (= 0.79.0)
   rubocop-rails (= 2.4.1)
   sass-rails (>= 6)
+  shoulda-matchers!
+  simplecov (~> 0.16.1)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)

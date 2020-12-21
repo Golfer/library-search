@@ -33,6 +33,8 @@ group :development, :test do
 
   gem 'pry'
   gem 'pry-byebug'
+
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 end
 
 group :development do
@@ -48,6 +50,16 @@ group :development do
 
   gem 'guard-brakeman'
   gem 'guard-rubocop', require: false
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.8'
+
+  gem 'rspec-activemodel-mocks'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'simplecov', '~> 0.16.1', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
