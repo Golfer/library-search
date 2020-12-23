@@ -28,11 +28,21 @@ module LibrarySearch
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :slim
+      g.test_framework  nil
+      g.assets false
+      g.helper false
+      g.stylesheets false
+    end
+
+    config.action_controller.permit_all_parameters = true
+    config.time_zone = "Eastern Time (US & Canada)"
   end
 end

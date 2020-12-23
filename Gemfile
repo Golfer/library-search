@@ -26,7 +26,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '~> 1.5.1', require: false
+
+gem 'activerecord-import'
+gem 'rest-client'
+gem 'slim-rails'
+
+# gem 'jsonapi-resources', '~>0.10.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
