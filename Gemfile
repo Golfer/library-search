@@ -15,6 +15,9 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
+
+# Not Use; Because Force::SSL deprecated in Rails 6.1; That's why use jbuilder instead jsonapi-resources
+# gem 'jsonapi-resources', '~>0.10.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -31,8 +34,7 @@ gem 'bootsnap', '~> 1.5.1', require: false
 gem 'activerecord-import'
 gem 'rest-client'
 gem 'slim-rails'
-
-# gem 'jsonapi-resources', '~>0.10.2'
+gem "jwt_sessions"
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
