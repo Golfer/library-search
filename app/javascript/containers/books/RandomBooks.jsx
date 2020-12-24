@@ -17,8 +17,6 @@ const classes = makeStyles((theme) => ({
 }));
 
 class RandomBooks extends Component {
-
-
     renderBooks(){
         return this.props.books.map((book, idx )=>
             <List key={book.id} className={classes.root}>
@@ -42,7 +40,6 @@ class RandomBooks extends Component {
                 <List>
                     {this.renderBooks()}
                 </List>
-
             </Fragment>
         )
     }

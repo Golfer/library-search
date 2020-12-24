@@ -32,9 +32,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '~> 1.5.1', require: false
 
 gem 'activerecord-import'
+gem 'jwt_sessions'
 gem 'rest-client'
 gem 'slim-rails'
-gem "jwt_sessions"
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
