@@ -6,6 +6,6 @@ class Books
   private
 
   def books
-    Book.random_books(25)
+    Book.random_books(15)
   end
 end

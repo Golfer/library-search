@@ -1,78 +1,99 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import classes from './NavBar.css'
+import React, {Component, Fragment} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import LogoApp from 'images/logo.png'
+import {connect} from "react-redux";
+import {logOut} from "../actions/authorization";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-    active: {
-        color: 'white'
+class NavigationBar extends Component {
+    clickSignOutHandler=()=>{
+      this.props.logOut()
     }
-}));
 
+    renderButtonUnAuthorize(){
+        return <Fragment>
+            <Button color="inherit">
+                <NavLink
+                    to="/sign_out"
+                    exact={false}
+                    onClick={this.clickSignOutHandler}
+                >
+                    Log Out
+                </NavLink>
+            </Button>
+        </Fragment>
+    }
 
-
-function clickSignInHandler() {
-
-    console.log('clickSignInHandler')
-}
-
-function clickBooksHandler() {
-    console.log('clickBooksHandler')
-}
-
-function clickSignUpHandler() {
-    console.log('clickSignUpHandler')
-}
-export default function NavigationBar() {
-    const classes = useStyles();
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Button color="inherit">
-                        <NavLink
-                            to="/books"
-                            exact={false}
-                            activeClassName={classes.active}
-                            onClick={clickBooksHandler}
-                        >
-                            Books
-                        </NavLink>
-                    </Button>
-                    <Button color="inherit">
-                        <NavLink
-                            to="/sign_in"
-                            exact={false}
-                            activeClassName={classes.active}
-                            onClick={clickSignInHandler}
-                        >
-                            Sign In
-                        </NavLink>
-                    </Button>
-
+    renderButtonAuthorize(){
+        return <Fragment>
+                <Button color="inherit">
+                    <NavLink
+                        to="/sign_in"
+                        className={classes.inactive}
+                        activeClassName={classes.active}
+                    >
+                        Sign In
+                    </NavLink>
+                </Button>
+                <Button color="inherit">
                     <NavLink
                         to="/sign_up"
-                        exact={false}
+                        className={classes.inactive}
                         activeClassName={classes.active}
-                        onClick={clickSignUpHandler}
                     >
-                        <Button color="inherit">
-                            Sign Up
-                        </Button>
+                        Sign Up
                     </NavLink>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+                </Button>
+        </Fragment>
+    }
+    
+    render() {
+
+        return (
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <NavLink
+                            to="/"
+                            exact={true}
+                            className={classes.inactive}
+                            activeClassName={classes.active}
+                        >
+                            <img src={LogoApp} alt="logo" className={classes.logoAppStyle} style={{maxWidth: '40px'}}/>
+                        </NavLink>
+                        <Typography variant="h6" className={classes.title}>
+                            <NavLink
+                                to="/books"
+                                exact={false}
+                                className={classes.inactive}
+                                activeClassName={classes.active}
+                            >
+                                Books
+                            </NavLink>
+                        </Typography>
+                        {!!this.props.isAuthenticate ? this.renderButtonUnAuthorize() : this.renderButtonAuthorize()}
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
+    }
 }
+function mapStateToProps(state) {
+    return {
+        isAuthenticate: !!state.authorization.token,
+        token: state.authorization.token,
+        csrfToken: state.authorization.csrfToken
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        logOut: (token) => dispatch(logOut())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar)

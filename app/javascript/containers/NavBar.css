@@ -1,0 +1,24 @@
+.root{
+    flex-grow: 1
+}
+.menuButton{
+   margin-right: 20px;
+}
+.title{
+    flex-grow: 1
+}
+.active{
+   size: 18px;
+   color: white !important;
+   text-transform: uppercase;
+   text-decoration: none;
+}
+.inactive{
+   color: cornflowerblue;
+   text-transform: uppercase;
+   text-decoration: none;
+}
+.logoAppStyle{
+   max-width: 40px;
+   margin-right: 25px;
+}

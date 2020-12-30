@@ -23,8 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+gem 'bcrypt', '~> 3.1.16'
+gem 'rack-cors'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -33,6 +33,7 @@ gem 'bootsnap', '~> 1.5.1', require: false
 
 gem 'activerecord-import'
 gem 'jwt_sessions'
+gem 'redis'
 gem 'rest-client'
 gem 'slim-rails'
 

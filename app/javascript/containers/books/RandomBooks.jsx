@@ -5,6 +5,10 @@ import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
+import Loader from "../Loader";
+import IconButton from "@material-ui/core/IconButton";
+import {LockOpen} from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
 
 const classes = makeStyles((theme) => ({
     root: {
@@ -17,6 +21,10 @@ const classes = makeStyles((theme) => ({
 }));
 
 class RandomBooks extends Component {
+    componentDidMount() {
+        this.props.books.length > 0 ? null : this.props.fetchBooks()
+    }
+
     renderBooks(){
         return this.props.books.map((book, idx )=>
             <List key={book.id} className={classes.root}>
@@ -29,17 +37,26 @@ class RandomBooks extends Component {
         )
     }
 
-    componentDidMount() {
-        this.props.fetchBooks()
-    }
-
     render() {
         return (
             <Fragment>
-                <h3>Random books</h3>
-                <List>
-                    {this.renderBooks()}
-                </List>
+                <h3>
+                    <span>
+                        Random books
+                    </span>
+                    <Button
+                        variant="outlined"
+                        style={{
+                            margin: 13,
+                        }}
+                        onClick={()=> {this.props.fetchBooks()}}
+                    >
+                        Reload
+                    </Button>
+                </h3>
+                {
+                    this.props.books.length !== 0 ? <List>{this.renderBooks()}</List> : <Loader/>
+                }
             </Fragment>
         )
     }
@@ -48,6 +65,7 @@ class RandomBooks extends Component {
 function mapStateToProps(state) {
     return {
         books: state.books.books,
+        loading: state.books.loading,
     }
 }
 

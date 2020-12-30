@@ -1,0 +1,8 @@
+.root{
+    flex-grow: 1
+}
+.formControl{
+    margin: 30px;
+    min-width: 120px;
+    max-width: 300px;
+}

@@ -6,25 +6,25 @@ import {
 
 const initialState = {
     books: [],
-    showBooks: false
+    loading: false
 }
 
 export default function booksReducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_BOOKS_START:
             return {
-                ...state, showBooks: false
+                ...state, loading: true
             }
         case FETCH_BOOKS_SUCCESS:
 
             return {
                 ...state,
                 books: action.books,
-                showBooks: true,
+                loading: false
             }
         case FETCH_BOOKS_ERROR:
             return {
-                ...state, error: action.error
+                ...state, error: action.error, loading: false
             }
         default:
             return {
