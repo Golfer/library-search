@@ -11,9 +11,14 @@ import {connect} from "react-redux";
 import {authorization} from "../../actions/authorization";
 import classes from './SignInForm.css'
 import {Redirect} from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
+import Avatar from "@material-ui/core/Avatar";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
 
 
-class SignInForm extends Component {
+class SignInFormOLD extends Component {
 
     constructor(props) {
         super(props);
@@ -94,68 +99,80 @@ class SignInForm extends Component {
 
     render() {
 
-        const SignInForm = <Fragment>
-            <span>Log In </span>
-            <Card className={classes.root}>
-                <CardContent>
-                    <form className={classes.root}  autoComplete="off" onSubmit={this.SubmitHandler}>
-                        <Box alignItems="flex-start" width={1}>
-                            <TextField
-                                id="email"
-                                label="Email"
-                                type="email"
-                                style={{
-                                    margin: 15,
-                                    minWidth: '50%'
-                                }}
-                                margin="normal"
-                                variant="outlined"
-                                error={!this.state.formControls.email.valid && this.state.formControls.email.touched}
-                                helperText={this.state.formControls.email.valid ? (!!this.props.errors.email ? this.props.errors.email[0] : null) : this.state.formControls.email.errorMsg}
-                                value={this.state.formControls.email.value}
-                                onChange={event => this.changeControlHandler(event, 'email')}
-                            />
-                            <TextField
-                                id="password"
-                                type="password"
-                                label="Password"
-                                style={{
-                                    margin: 15,
-                                    minWidth: '50%'
-                                }}
-                                margin="normal"
-                                variant="outlined"
-                                value={this.state.formControls.password.value}
-                                error={!this.state.formControls.password.valid && this.state.formControls.password.touched}
-                                helperText={this.state.formControls.password.valid ? null : this.state.formControls.password.errorMsg}
-                                onChange={event => this.changeControlHandler(event, 'password')}
-                            />
-                            <Button
-                                variant="outlined"
-                                style={{
-                                    margin: 13,
-                                }}
-                                onClick={this.handleSignIn}
-                                disabled={!this.state.isFormValid}
-                            >
-                                <label htmlFor="icon-button-search">
-                                    <IconButton color="primary" aria-label="search picture" component="span">
-                                        <LockOpenOutlined />
-                                    </IconButton>
-                                </label>
-                                Sign In
-                            </Button>
+        const SignInForm =
+            <Container component="main" maxWidth="md">
+                <CssBaseline />
+                <Card className={classes.form}>
+                    <CardContent>
+                        <Box className={classes.alignItemsAndJustifyContent} width={1}>
+                            <Avatar className={classes.avatar}>
+                                <LockOutlinedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Sign in
+                            </Typography>
                         </Box>
+                        <form className={classes.root}  autoComplete="off" onSubmit={this.SubmitHandler}>
+                            <Box alignItems="flex-start" width={1}>
+                                <TextField
+                                    id="email"
+                                    label="Email"
+                                    type="email"
+                                    style={{
+                                        margin: 15,
+                                        minWidth: '50%'
+                                    }}
+                                    margin="normal"
+                                    variant="outlined"
+                                    error={!this.state.formControls.email.valid && this.state.formControls.email.touched}
+                                    helperText={this.state.formControls.email.valid ? (!!this.props.errors.email ? this.props.errors.email[0] : null) : this.state.formControls.email.errorMsg}
+                                    value={this.state.formControls.email.value}
+                                    onChange={event => this.changeControlHandler(event, 'email')}
+                                />
+                                <TextField
+                                    id="password"
+                                    type="password"
+                                    label="Password"
+                                    style={{
+                                        margin: 15,
+                                        minWidth: '50%'
+                                    }}
+                                    margin="normal"
+                                    variant="outlined"
+                                    value={this.state.formControls.password.value}
+                                    error={!this.state.formControls.password.valid && this.state.formControls.password.touched}
+                                    helperText={this.state.formControls.password.valid ? null : this.state.formControls.password.errorMsg}
+                                    onChange={event => this.changeControlHandler(event, 'password')}
+                                />
+                                <Box className={classes.alignItemsAndJustifyContent} width={1}>
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            margin: 13,
+                                        }}
+                                        onClick={this.handleSignIn}
+                                        disabled={!this.state.isFormValid}
+                                    >
+                                        <label htmlFor="icon-button-search">
+                                            <IconButton color="primary" aria-label="search picture" component="span">
+                                                <LockOpenOutlined />
+                                            </IconButton>
+                                        </label>
+                                        Sign In
+                                    </Button>
+                                </Box>
 
-                    </form>
-                </CardContent>
-            </Card>
-        </Fragment>
+                            </Box>
+                        </form>
+                    </CardContent>
+                </Card>
+        </Container>
 
 
-        return <Fragment>
+        return <Container component="main" maxWidth="sm">
+            <CssBaseline />
             {this.props.isAuthenticate ? <Redirect to={'/books'} /> : SignInForm}
-        </Fragment>
+        </Container>
     }
 }
 
@@ -174,4 +191,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SignInFormOLD)

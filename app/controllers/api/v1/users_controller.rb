@@ -12,16 +12,17 @@ module Api
           tokens = session.login
 
           @user.update!(
-              access_token: tokens[:access],
-              access_token_expired_at: tokens[:access_expires_at],
-              refresh_token: tokens[:refresh],
-              refresh_token_expires_at: tokens[:refresh_expires_at],
-              csrf_token: tokens[:csrf])
+            access_token: tokens[:access],
+            access_token_expired_at: tokens[:access_expires_at],
+            refresh_token: tokens[:refresh],
+            refresh_token_expires_at: tokens[:refresh_expires_at],
+            csrf_token: tokens[:csrf]
+          )
 
           response.set_cookie(JWTSessions.access_cookie,
                               value: tokens[:access],
                               httponly: true,
-                              secure: Rails.env.production? )
+                              secure: Rails.env.production?)
           render :show, status: :created
         else
           render json: { errors: @user.errors }, status: :unprocessable_entity

@@ -11,3 +11,29 @@ formControl {
          minWidth: 120px;
          maxWidth: 300px;
      }
+.paper{
+    margin-top: 32px;
+    display: flex;
+    flexDirection: column;
+    alignItems: center;
+}
+.avatar {
+    margin: 4px;
+    background-color: #dc004e;
+}
+.form {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.submit{
+    margin: 40px
+}
+
+
+.alignItemsAndJustifyContent{
+    width: 500px;
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+}

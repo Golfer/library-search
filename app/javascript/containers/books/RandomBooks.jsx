@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {connect} from "react-redux";
 import {fetchBooks} from '../../actions/book';
 import { List } from '@material-ui/core';
@@ -9,6 +9,8 @@ import Loader from "../Loader";
 import IconButton from "@material-ui/core/IconButton";
 import {LockOpen} from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
 
 const classes = makeStyles((theme) => ({
     root: {
@@ -39,7 +41,8 @@ class RandomBooks extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Container component="main" maxWidth="xl">
+                <CssBaseline />
                 <h3>
                     <span>
                         Random books
@@ -57,7 +60,7 @@ class RandomBooks extends Component {
                 {
                     this.props.books.length !== 0 ? <List>{this.renderBooks()}</List> : <Loader/>
                 }
-            </Fragment>
+            </Container>
         )
     }
 }

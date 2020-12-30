@@ -20,15 +20,16 @@ module Api
     helper_method :current_user
 
     def current_user
-        @current_user ||= begin
-                            authorization_token = request.headers["Authorization"]
-                            raise ActionController::InvalidAuthenticityToken if authorization_token.blank?
+      @current_user ||= begin
+                          authorization_token = request.headers['Authorization']
+                          raise ActionController::InvalidAuthenticityToken if authorization_token.blank?
 
-                            user = User.find_by(access_token: authorization_token.gsub('Bearer','').strip)
+                          user = User.find_by(access_token: authorization_token.gsub('Bearer', '').strip)
 
-                            raise ActionController::InvalidAuthenticityToken if user.blank?
-                            user
-                          end
+                          raise ActionController::InvalidAuthenticityToken if user.blank?
+
+                          user
+                        end
 
       user
     end
