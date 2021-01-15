@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: library_search_dev
+  database: library_search_dev_v2
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

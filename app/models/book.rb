@@ -4,6 +4,6 @@ class Book < ApplicationRecord
   validates :title, presence: true
 
   def self.random_books(limit)
-    find(order(:title).pluck(:id).sample(limit))
+    find(distinct(:title).pluck(:id).sample(limit))
   end
 end

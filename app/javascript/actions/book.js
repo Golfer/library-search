@@ -1,5 +1,9 @@
 import axios from 'axios'
-import {FETCH_BOOKS_START, FETCH_BOOKS_ERROR, FETCH_BOOKS_SUCCESS} from './actionTypes'
+import {
+    FETCH_BOOKS_START,
+    FETCH_BOOKS_ERROR,
+    FETCH_BOOKS_SUCCESS,
+} from './actionTypes'
 
 export function fetchBooks() {
     return async dispatch => {

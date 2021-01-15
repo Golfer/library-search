@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_181936) do
+ActiveRecord::Schema.define(version: 2020_12_30_220750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "full_name"
     t.string "web_site"
     t.string "born_in"
     t.datetime "date_bith"
@@ -25,6 +24,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_181936) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["full_name"], name: "index_authors_on_full_name"
+    t.index ["web_site"], name: "index_authors_on_web_site"
   end
 
   create_table "books", force: :cascade do |t|
@@ -32,9 +33,13 @@ ActiveRecord::Schema.define(version: 2020_12_26_181936) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
     t.string "author_list"
     t.jsonb "isbns", default: [], null: false
     t.jsonb "ranks_history", default: [], null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["isbns"], name: "index_books_on_isbns"
+    t.index ["title"], name: "index_books_on_title"
   end
 
   create_table "users", force: :cascade do |t|

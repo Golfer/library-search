@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resource :users
       resource :sessions
       resources :books, only: %i(index)
+      resources :search, only: %i(index create)
     end
   end
 

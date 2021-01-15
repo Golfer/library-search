@@ -33,6 +33,7 @@ gem 'bootsnap', '~> 1.5.1', require: false
 
 gem 'activerecord-import'
 gem 'jwt_sessions'
+gem 'ransack'
 gem 'redis'
 gem 'rest-client'
 gem 'slim-rails'
@@ -43,12 +44,14 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
 
-  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'factory_bot_rails'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'ffaker'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'web-console', '>= 4.1.0'
 
   gem 'overcommit'

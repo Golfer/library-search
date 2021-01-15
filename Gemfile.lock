@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/faker-ruby/faker.git
-  revision: ec06d217644cf3d66bd0e658c9b168af8f0c38c7
+  remote: https://github.com/stympy/faker.git
+  revision: a1ba45c7c79bac3ad9da5a3018f9f91bfd8ff707
   branch: master
   specs:
     faker (2.15.1)
@@ -96,6 +96,12 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    ffaker (2.17.0)
     ffi (1.13.1)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -214,6 +220,10 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.1)
+    ransack (2.4.0)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -320,7 +330,9 @@ DEPENDENCIES
   brakeman
   byebug
   database_cleaner
+  factory_bot_rails
   faker!
+  ffaker
   guard-brakeman
   guard-rubocop
   jbuilder (~> 2.7)
@@ -335,6 +347,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.0)
   rails-controller-testing
+  ransack
   redis
   rest-client
   rspec-activemodel-mocks
